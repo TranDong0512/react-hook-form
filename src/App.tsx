@@ -20,6 +20,15 @@ const rowStyle = {
   alignItems: "center",
   marginBottom: "15px", // Added margin between rows
 };
+const styleErr = {
+  color: "red",
+  fontSize: "12px",
+  fontWeight: "500",
+  display: "inline-block",
+  width: "100%",
+  textAlign: "left",
+  marginTop: "2px",
+};
 
 interface IFormInput {
   name: string;
@@ -34,7 +43,8 @@ export default function App() {
     formState: { errors },
     reset,
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = (data) =>
+    alert(`${data.name}-${data.email}-${data.age}`);
 
   return (
     <form
@@ -50,6 +60,7 @@ export default function App() {
           error={errors.name}
           labelStyle={customLabelStyle}
           inputStyle={customInputStyle}
+          styleErr={styleErr}
         />
         <InputField
           id="email"
@@ -66,6 +77,7 @@ export default function App() {
           error={errors.email}
           labelStyle={customLabelStyle}
           inputStyle={customInputStyle}
+          styleErr={styleErr}
         />
         <InputField
           id="age"
@@ -86,6 +98,7 @@ export default function App() {
           error={errors.age}
           labelStyle={customLabelStyle}
           inputStyle={customInputStyle}
+          styleErr={styleErr}
         />
       </div>
       <div style={{ marginTop: "20px" }}>

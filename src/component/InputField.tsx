@@ -15,6 +15,7 @@ interface InputFieldProps {
   error?: FieldError;
   labelStyle?: object;
   inputStyle?: object;
+  styleErr?: object;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -26,6 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
   error,
   labelStyle,
   inputStyle,
+  styleErr,
 }) => {
   return (
     <div>
@@ -38,7 +40,8 @@ const InputField: React.FC<InputFieldProps> = ({
         {...register(id as keyof IFormInput, rules)}
         style={inputStyle}
       />
-      {error && <span>{error.message}</span>}
+      <br></br>
+      {error && <span style={styleErr}>{error.message}</span>}
     </div>
   );
 };
